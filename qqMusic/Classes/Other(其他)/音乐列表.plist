@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>singer</key>
+		<string>徐佳莹</string>
+		<key>song</key>
+		<string>喜欢你</string>
+		<key>url</key>
+		<string>喜欢你.mp3</string>
+		<key>image</key>
+		<string>徐佳莹.jpg</string>
+	</dict>
+	<dict>
+		<key>singer</key>
+		<string>魏新雨</string>
+		<key>song</key>
+		<string>恋人心 </string>
+		<key>url</key>
+		<string>恋人心.mp3</string>
+		<key>image</key>
+		<string>魏新雨.jpg</string>
+	</dict>
+	<dict>
+		<key>singer</key>
+		<string>孙燕姿</string>
+		<key>song</key>
+		<string>我怀念的</string>
+		<key>url</key>
+		<string>我怀念的.mp3</string>
+		<key>image</key>
+		<string>孙燕姿.jpg</string>
+	</dict>
+	<dict>
+		<key>singer</key>
+		<string>薛之谦</string>
+		<key>song</key>
+		<string>演员</string>
+		<key>url</key>
+		<string>演员.mp3</string>
+		<key>image</key>
+		<string>薛之谦.jpg</string>
+	</dict>
+	<dict>
+		<key>singer</key>
+		<string>邓紫棋</string>
+		<key>song</key>
+		<string>多远都要在一起</string>
+		<key>url</key>
+		<string>多远都要在一起.mp3</string>
+		<key>image</key>
+		<string>邓紫棋.jpg</string>
+	</dict>
+	<dict>
+		<key>singer</key>
+		<string>陈奕迅</string>
+		<key>song</key>
+		<string>浮夸</string>
+		<key>url</key>
+		<string>浮夸.mp3</string>
+		<key>image</key>
+		<string>陈奕迅.jpg</string>
+	</dict>
+	<dict>
+		<key>singer</key>
+		<string>周杰伦</string>
+		<key>song</key>
+		<string>七里香</string>
+		<key>url</key>
+		<string>七里香.mp3</string>
+		<key>image</key>
+		<string>周杰伦.jpg</string>
+	</dict>
+</array>
+</plist>
