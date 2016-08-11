@@ -25,20 +25,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     CareChoseViewController *careChoseVC = [[CareChoseViewController alloc] init];
     LineViewController *lineVC = [[LineViewController alloc] init];
     SingSheetViewController *singSheetVC = [[SingSheetViewController alloc] init];
     RadioStationViewController *radioStationVC = [[RadioStationViewController alloc] init];
     MVViewController *mvViewController = [[MVViewController alloc] init];
-    
     NSArray *arraySControllers = @[@{@"精选" : careChoseVC}, @{@"排行" : lineVC}, @{@"歌单" : singSheetVC},
                                    @{@"电台" : radioStationVC}, @{@"MV" : mvViewController}];
-    
-    //这里的坐标是关键
     SongYCSlideView *songerYCSlideView = [[SongYCSlideView alloc] initWithFrame:CGRectMake(0, 0, kWindowWidth, kWindowHeight) WithViewControllers:arraySControllers];
-    
     [self.view addSubview:songerYCSlideView];
     
 }

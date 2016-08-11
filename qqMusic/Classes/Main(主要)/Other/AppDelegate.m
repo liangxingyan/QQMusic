@@ -19,41 +19,30 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
 
-    //1.创建窗口
+    
+    //设置statusBar的风格
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    //设置statusBar的隐藏属性
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    
-    //2.创建视图控制器
     FirstViewController *firstViewController = [[FirstViewController alloc] init];
-        
-    //3.创建导航控制器
     UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:firstViewController];
-    
-    
     
     //4.创建左边抽拉视图
     leftViewController *leftVC = [[leftViewController alloc] init];
-    
-    //5.创建导航控制器
     UINavigationController *leftNavigation = [[UINavigationController alloc] initWithRootViewController:leftVC];
-    
     
     //6.抽拉管理
     MMDrawerController *rootVC = [[MMDrawerController alloc] initWithCenterViewController:navigation leftDrawerViewController:leftNavigation];
-    
-    //7.将导航控制器加入到window上
     self.window.rootViewController = rootVC;
-    
     //8.侧拉的宽度
     [rootVC setMaximumLeftDrawerWidth:230];
-    
     //9.设置侧拉动画
     [rootVC setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [rootVC setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-    
     //10.设置左滑打开左侧栏
     [[MMExampleDrawerVisualStateManager sharedManager] setRightDrawerAnimationType:MMDrawerAnimationTypeNone];
     
@@ -67,10 +56,7 @@
         
     }];
     
-    
-    //11.显示窗口
     [self.window makeKeyAndVisible];
-    
     
     return YES;
 }

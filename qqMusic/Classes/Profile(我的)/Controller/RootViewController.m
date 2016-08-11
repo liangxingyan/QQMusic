@@ -12,6 +12,7 @@
 #import "UIImageView+WebCache.h"
 #import "LoginViewController.h"
 #import "FirstViewController.h"
+#import "UIImageView+BSExtension.h"
 
 @interface RootViewController ()
 
@@ -24,7 +25,6 @@
 
 @implementation RootViewController
 
-//写了但是没反应，待解决
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
@@ -45,9 +45,11 @@
     [self _createBackgroundView];
     
     [self loadNewStatus];
+    
+
 }
 
-#pragma mark - 加载最新的微博数据
+#pragma mark - 加载最新的数据
 - (void)loadNewStatus {
 
     /**
@@ -108,11 +110,11 @@
  
     // 设置头像
     NSString *imageUrl = music.picUrl;
-    UIImage *placehoder = [UIImage imageNamed:@"avatar_default_small"];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:placehoder];
+    [cell.imageView setHeader:imageUrl];
     
     // 设置cell的背景
     cell.backgroundColor = [UIColor colorWithRed:35/255.0 green:53/255.0 blue:68/255.0 alpha:1];
+    
     
     return cell;
 }
@@ -128,6 +130,7 @@
     
     // 载入歌曲的数据
     [log loadData:music];
+    
     
     // 改变index
     log.index = indexPath.row;
