@@ -16,6 +16,7 @@
 #import "UIImageView+BSExtension.h"
 #import "LrcView.h"
 #import "LXYLrcLabel.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 #define kWidth self.view.bounds.size.width
 #define kHeight self.view.bounds.size.height
@@ -32,7 +33,8 @@ static LoginViewController *loginViewController = nil;
 @property (nonatomic, strong) CADisplayLink *lrcLink;
 /** 歌词label */
 @property (nonatomic, strong) LXYLrcLabel *lrcLabel;
-
+/** 上一首 */
+@property (nonatomic, weak) UIButton *lastButton;
 @end
 
 @implementation LoginViewController
@@ -127,6 +129,7 @@ static LoginViewController *loginViewController = nil;
         make.right.equalTo(self.view.mas_right);
     }];
     self.lrcView.lrcLabel = self.lrcLabel;
+    self.lrcView.musicData = self.musicData;
 }
 
 #pragma mark - 歌曲数据
@@ -160,6 +163,9 @@ static LoginViewController *loginViewController = nil;
     
     [self removeLrcTimer];
     [self addLrcTimer];
+    
+    self.lrcView.index = self.index;
+    self.lrcView.duration = self.player.duration;
     
     // 这里调用block是因为点击了cell，所以FirstViewController里面也要改变
     if (_myBlock) {
@@ -352,6 +358,7 @@ static LoginViewController *loginViewController = nil;
     lastButton.tag = 100;
     [lastButton addTarget:self action:@selector(passAction:) forControlEvents:UIControlEventTouchUpInside];
     [play addSubview:lastButton];
+    self.lastButton = lastButton;
     
     // 下一首
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -444,7 +451,7 @@ static LoginViewController *loginViewController = nil;
     
 }
 
-#pragma mark - UIButton Acton 点击事件
+#pragma mark -  播放功能 点击事件
 - (void)passAction:(UIButton *)button {
     if (button.tag == 100) {
         //上一首
@@ -628,12 +635,25 @@ static LoginViewController *loginViewController = nil;
     self.lrcLabel.alpha = ratio;
 }
 
+#pragma mark - 监听锁屏界面事件
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+    switch (event.subtype) {
+        case UIEventSubtypeRemoteControlPlay :
+        case UIEventSubtypeRemoteControlPause :
+            [self playsongAction:self.playButton];
+            break;
+        case UIEventSubtypeRemoteControlNextTrack :
+        case UIEventSubtypeRemoteControlPreviousTrack :
+            [self passAction:self.lastButton];
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark - 默认方法
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
 @end
